@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMood } from '../context/MoodContext';
 import EmojiMoodSelector from '../components/EmojiMoodSelector';
 import GradientSlider from '../components/GradientSlider';
+import EmotionSelector from '../components/EmotionSelector';
 import NoteInput from '../components/NoteInput';
 import LocationTag from '../components/LocationTag';
 
@@ -13,6 +14,7 @@ const CheckIn = () => {
     const [mood, setMood] = useState(3);
     const [anxiety, setAnxiety] = useState(0);
     const [depression, setDepression] = useState(0);
+    const [emotions, setEmotions] = useState([]);
     const [note, setNote] = useState('');
     const [location, setLocation] = useState(null);
 
@@ -22,6 +24,7 @@ const CheckIn = () => {
             mood,
             anxiety,
             depression,
+            emotions,
             note,
             location,
         };
@@ -52,6 +55,8 @@ const CheckIn = () => {
                         colorEnd="#3b82f6"
                     />
                 </div>
+
+                <EmotionSelector selectedEmotions={emotions} onChange={setEmotions} />
 
                 <NoteInput value={note} onChange={setNote} />
 

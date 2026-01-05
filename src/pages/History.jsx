@@ -95,6 +95,22 @@ const History = () => {
                                     </span>
                                 )}
                             </div>
+
+                            {entry.emotions && entry.emotions.length > 0 && (
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginTop: '8px' }}>
+                                    {entry.emotions.map(e => (
+                                        <span key={e} style={{
+                                            fontSize: '0.75rem',
+                                            background: 'rgba(255,255,255,0.1)',
+                                            padding: '2px 8px',
+                                            borderRadius: '12px',
+                                            color: 'var(--text-secondary)'
+                                        }}>
+                                            {e}
+                                        </span>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                 ))}

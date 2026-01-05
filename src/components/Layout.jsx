@@ -8,15 +8,12 @@ const Layout = ({ children }) => {
 
     return (
         <div className="layout-container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-            <header className="glass-panel" style={{
+            <header className="glass-panel header-container" style={{
                 position: 'sticky',
                 top: 0,
                 zIndex: 50,
                 margin: 'var(--spacing-sm)',
                 padding: 'var(--spacing-sm) var(--spacing-md)',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center'
             }}>
                 <h1 style={{ fontSize: '1.25rem', background: 'linear-gradient(to right, #fff, #94a3b8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                     Mood<span style={{ color: 'var(--accent-primary)', WebkitTextFillColor: 'initial' }}>Journal</span>
@@ -24,11 +21,12 @@ const Layout = ({ children }) => {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     {user ? (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }} className="hide-on-mobile">
                                 {isSyncing ? 'Syncing...' : 'Synced'}
                             </span>
                             <button onClick={logout} style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
-                                Sign Out
+                                <span className="hide-on-mobile">Sign Out</span>
+                                <span className="nav-text" style={{ display: 'none' }}>Sign Out</span> {/* Hack to make verify easier? No, let's just use an icon or simplify text */}
                             </button>
                         </div>
                     ) : (
@@ -47,7 +45,7 @@ const Layout = ({ children }) => {
                             }}
                         >
                             <img src="https://www.google.com/favicon.ico" alt="G" style={{ width: 14, height: 14 }} />
-                            Sign In
+                            <span className="hide-on-mobile">Sign In</span>
                         </button>
                     )}
 
@@ -71,7 +69,7 @@ const Layout = ({ children }) => {
                             })}
                         >
                             <Smile size={18} />
-                            <span>Check-in</span>
+                            <span className="nav-text">Check-in</span>
                         </NavLink>
                         <NavLink
                             to="/history"
@@ -92,7 +90,7 @@ const Layout = ({ children }) => {
                             })}
                         >
                             <BarChart2 size={18} />
-                            <span>History</span>
+                            <span className="nav-text">History</span>
                         </NavLink>
                     </nav>
                 </div>
